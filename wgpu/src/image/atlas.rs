@@ -312,7 +312,7 @@ impl Atlas {
         image_width: u32,
         offset: usize,
         allocation: &Allocation,
-        device: &wgpu::Device,
+        _device: &wgpu::Device,
         encoder: &mut wgpu::CommandEncoder,
         belt: &mut wgpu::util::StagingBelt,
     ) {
@@ -334,7 +334,6 @@ impl Atlas {
         let buffer_slice = belt.allocate(
             wgpu::BufferSize::new(total_bytes as u64).unwrap(),
             wgpu::BufferSize::new(8 * 4).unwrap(),
-            device,
         );
 
         const PIXEL: usize = 4;

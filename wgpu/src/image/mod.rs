@@ -45,7 +45,7 @@ impl Pipeline {
             address_mode_w: wgpu::AddressMode::ClampToEdge,
             min_filter: wgpu::FilterMode::Nearest,
             mag_filter: wgpu::FilterMode::Nearest,
-            mipmap_filter: wgpu::FilterMode::Nearest,
+            mipmap_filter: wgpu::MipmapFilterMode::Nearest,
             ..Default::default()
         });
 
@@ -55,7 +55,7 @@ impl Pipeline {
             address_mode_w: wgpu::AddressMode::ClampToEdge,
             min_filter: wgpu::FilterMode::Linear,
             mag_filter: wgpu::FilterMode::Linear,
-            mipmap_filter: wgpu::FilterMode::Linear,
+            mipmap_filter: wgpu::MipmapFilterMode::Linear,
             ..Default::default()
         });
 
