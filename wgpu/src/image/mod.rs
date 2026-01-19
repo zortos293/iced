@@ -106,7 +106,7 @@ impl Pipeline {
         let layout =
             device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
                 label: Some("iced_wgpu::image pipeline layout"),
-                push_constant_ranges: &[],
+                immediate_size: 0,
                 bind_group_layouts: &[&constant_layout, &texture_layout],
             });
 
@@ -191,7 +191,7 @@ impl Pipeline {
                     mask: !0,
                     alpha_to_coverage_enabled: false,
                 },
-                multiview: None,
+                multiview_mask: None,
                 cache: None,
             });
 
@@ -528,7 +528,6 @@ impl Layer {
             &self.uniforms,
             0,
             (bytes.len() as u64).try_into().expect("Sized uniforms"),
-            device,
         )
         .copy_from_slice(bytes);
 

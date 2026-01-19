@@ -233,7 +233,7 @@ wasm-bindgen-futures = "0.4"
 wasmtimer = "0.4.2"
 web-sys = "0.3.69"
 web-time = "1.1"
-wgpu = { version = "27.0", default-features = false, features = ["std", "wgsl"] }
+wgpu = { version = "28.0", default-features = false, features = ["std", "wgsl"] }
 window_clipboard = { version = "0.5", default-features = false }
 winit = { version = "0.30", default-features = false, features = ["rwh_06"] }
 
@@ -263,3 +263,13 @@ useless_conversion = "deny"
 
 [workspace.lints.rustdoc]
 broken_intra_doc_links = "forbid"
+
+# Patch all wgpu dependencies to use version 28
+[patch.crates-io]
+wgpu = { git = "https://github.com/gfx-rs/wgpu", tag = "v28.0.0" }
+wgpu-core = { git = "https://github.com/gfx-rs/wgpu", tag = "v28.0.0" }
+wgpu-types = { git = "https://github.com/gfx-rs/wgpu", tag = "v28.0.0" }
+wgpu-hal = { git = "https://github.com/gfx-rs/wgpu", tag = "v28.0.0" }
+naga = { git = "https://github.com/gfx-rs/wgpu", tag = "v28.0.0" }
+# Use forked cryoglyph with wgpu 28 support
+cryoglyph = { git = "https://github.com/zortos293/cryoglyph", branch = "wgpu-28" }

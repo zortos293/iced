@@ -313,6 +313,7 @@ fn render<'a>(
                 depth_stencil_attachment: None,
                 timestamp_writes: None,
                 occlusion_query_set: None,
+                multiview_mask: None,
             })
         };
 
@@ -731,7 +732,7 @@ mod solid {
                 &wgpu::PipelineLayoutDescriptor {
                     label: Some("iced_wgpu.triangle.solid.pipeline_layout"),
                     bind_group_layouts: &[&constants_layout],
-                    push_constant_ranges: &[],
+                    immediate_size: 0,
                 },
             );
 
@@ -784,7 +785,7 @@ mod solid {
                         primitive: triangle::primitive_state(),
                         depth_stencil: None,
                         multisample: triangle::multisample_state(antialiasing),
-                        multiview: None,
+                        multiview_mask: None,
                         cache: None,
                     },
                 );
@@ -886,7 +887,7 @@ mod gradient {
                 &wgpu::PipelineLayoutDescriptor {
                     label: Some("iced_wgpu.triangle.gradient.pipeline_layout"),
                     bind_group_layouts: &[&constants_layout],
-                    push_constant_ranges: &[],
+                    immediate_size: 0,
                 },
             );
 
@@ -949,7 +950,7 @@ mod gradient {
                     primitive: triangle::primitive_state(),
                     depth_stencil: None,
                     multisample: triangle::multisample_state(antialiasing),
-                    multiview: None,
+                    multiview_mask: None,
                     cache: None,
                 },
             );

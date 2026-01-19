@@ -124,6 +124,7 @@ impl Renderer {
             // It would be great if the `StagingBelt` API exposed methods
             // for introspection to detect when a resize may be worth it.
             staging_belt: wgpu::util::StagingBelt::new(
+                engine.device.clone(),
                 buffer::MAX_WRITE_SIZE as u64,
             ),
 
@@ -452,6 +453,7 @@ impl Renderer {
                 depth_stencil_attachment: None,
                 timestamp_writes: None,
                 occlusion_query_set: None,
+                multiview_mask: None,
             },
         ));
 
@@ -526,6 +528,7 @@ impl Renderer {
                         depth_stencil_attachment: None,
                         timestamp_writes: None,
                         occlusion_query_set: None,
+                        multiview_mask: None,
                     },
                 ));
             }
@@ -619,6 +622,7 @@ impl Renderer {
                             depth_stencil_attachment: None,
                             timestamp_writes: None,
                             occlusion_query_set: None,
+                            multiview_mask: None,
                         },
                     ));
                 }
